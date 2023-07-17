@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Quote;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
