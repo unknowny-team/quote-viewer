@@ -1,0 +1,36 @@
+@import 'variables.scss';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+*:focus {
+  color: $backgroundAppColor;
+  -webkit-tap-highlight-color: $mainAppColor;
+  outline: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: $backgroundAppColor;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 5px;
+  width: 100%;
+  max-width: 1200px;
+}

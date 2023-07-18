@@ -1,0 +1,1 @@
+# Quote Viewer (Frontend part)
