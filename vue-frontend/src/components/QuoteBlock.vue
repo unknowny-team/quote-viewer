@@ -1,5 +1,5 @@
 <script>
-const API_KEY = 'http://127.0.0.1:8000/api/qusote'
+const API_URL = 'http://127.0.0.1:8000/api/quote'
 
 export default {
   mounted() {
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     async requestNewQuote() {
-      const response = await fetch(API_KEY, {
+      const response = await fetch(API_URL, {
         method: 'GET',
         headers: {
           Accept: 'application/json'
@@ -43,9 +43,9 @@ export default {
         <div class="quote__date">{{ new Date(quoteObj.date).toLocaleDateString() }}</div>
       </div>
       <div class="quote__error" v-else>
-        Looks like Unknown Team server is unavailable... Try again later.
+        Looks like quote API is unavailable... Try again later.
       </div>
-      <button class="new-quote-button" @click="requestNewQuote">Новая цитата</button>
+      <button class="new-quote-button" @click="requestNewQuote">Get new quote</button>
     </div>
   </div>
 </template>
