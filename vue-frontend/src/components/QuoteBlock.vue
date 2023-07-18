@@ -1,4 +1,6 @@
 <script>
+const API_KEY = 'http://127.0.0.1:8000/api/qusote'
+
 export default {
   mounted() {
     this.requestNewQuote()
@@ -6,24 +8,24 @@ export default {
   data() {
     return {
       quoteObj: {
-        text: '',
-        author: '',
-        date: ''
+        text: '#',
+        author: '#',
+        date: '1000-01-01'
       }
     }
   },
   methods: {
     async requestNewQuote() {
-      const response = await fetch('http://127.0.0.1/api/quote', {
+      const response = await fetch(API_KEY, {
         method: 'GET',
-        mode: 'cors',
         headers: {
           Accept: 'application/json'
         }
       })
 
       if (response.ok) {
-        this.quoteObj = await response.json()
+        const requestedQuote = await response.json()
+        this.quoteObj = requestedQuote.quote
       } else {
         this.quoteObj = undefined
       }
@@ -38,7 +40,7 @@ export default {
       <div class="quote__inner" v-if="quoteObj">
         <div class="quote__text">"{{ quoteObj.text }}"</div>
         <div class="quote__author">&#169; {{ quoteObj.author }}</div>
-        <div class="quote__date">{{ quoteObj.date }}</div>
+        <div class="quote__date">{{ new Date(quoteObj.date).toLocaleDateString() }}</div>
       </div>
       <div class="quote__error" v-else>
         Looks like Unknown Team server is unavailable... Try again later.
